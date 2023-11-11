@@ -35,11 +35,11 @@ if __name__ == "__main__":
         data_published = json_data["Published"]
         data_modified = json_data["Modified"]
         cvss = json_data["cvss"]
-        cwe = json_data["cwe"]
-        references_list = json_data["references"]
-        cpe = json_data["vulnerable_product"]
-        summary = json_data["summary"]
-        capec = json_data["capec"]
+        cwe = json_data["cwe"].replace("'", "\\'")
+        references_list = json_data["references"].replace("'", "\\'")
+        cpe = json_data["vulnerable_product"].replace("'", "\\'")
+        summary = json_data["summary"].replace("'", "\\'")
+        capec = json_data["capec"].replace("'", "\\'")
 
         # INSERT data
         query = "INSERT INTO `cve` (cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ({}, {}, {}, {}, {}, {}, {}, {}, {})".format(cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec)
