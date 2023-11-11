@@ -15,7 +15,7 @@ def getCVE(url):
         return None
 
 def dbquery(db_insert):
-    myconn = mysql.connector.connect(host=mydb["host"], user=mydb["user"], password=mydb["pass"], database=mydb["name"])
+    myconn = mysql.connector.connect(host=mydb["host"], user=mydb["user"], password=mydb["pass"], database=mydb["name"], auth_plugin='mysql_native_password')
     mycursor = myconn.cursor()
     mycursor.execute(db_insert)
 
