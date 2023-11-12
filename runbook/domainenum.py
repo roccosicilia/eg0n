@@ -53,7 +53,7 @@ if __name__ == "__main__":
             nsrecord += "{0} ".format(data)
         nsrecord_list = nsrecord.split(" ") # --> use this list for NS field in domains table
 
-        print("DEBUG: {}\t{}\t".format(arecord_list.pop(), nsrecord_list.pop()))
+        print("DEBUG: {}\t{}\t".format(arecord_list, nsrecord_list))
 
 '''
     # check A record
