@@ -45,15 +45,15 @@ if __name__ == "__main__":
         arecord = ''
         for data in r:
             arecord += "{0} ".format(data)
-        arecord_list = arecord.split(" ").pop() # --> use this list for IPADDRESS field in domains table
+        arecord_list = arecord.split(" ") # --> use this list for IPADDRESS field in domains table
 
         r = dns_query(target[3], 'NS')
         nsrecord = ''
         for data in r:
             nsrecord += "{0} ".format(data)
-        nsrecord_list = nsrecord.split(" ").pop() # --> use this list for NS field in domains table
+        nsrecord_list = nsrecord.split(" ") # --> use this list for NS field in domains table
 
-        print("DEBUG: {}\t{}\t".format(arecord_list, nsrecord_list))
+        print("DEBUG: {}\t{}\t".format(arecord_list.pop(), nsrecord_list.pop()))
 
 '''
     # check A record
