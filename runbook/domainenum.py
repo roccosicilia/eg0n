@@ -30,7 +30,7 @@ def dbselect(query):
 if __name__ == "__main__":
 
     ##### Local data ##############################################################################
-    base_url = sys.argv[2]
+    # base_url = sys.argv[2]
     timestamp_corrente = int(time.time())
 
     ##### Define TARGET list
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     targetlist = dbselect(query_targetlist)
 
     for target in targetlist:
-        print(target)
+        print(target[1])
 
 '''
     # check A record
