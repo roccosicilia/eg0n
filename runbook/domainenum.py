@@ -30,15 +30,30 @@ def dbselect(query):
 if __name__ == "__main__":
 
     ##### Local data ##############################################################################
-    # base_url = sys.argv[2]
     timestamp_corrente = int(time.time())
 
-    ##### Define TARGET list
+    ##### Define TARGET list ######################################################################
     query_targetlist = "SELECT * FROM `target` ORDER BY `id`"
     targetlist = dbselect(query_targetlist)
 
+    ##### Target enumaeration #####################################################################
     for target in targetlist:
-        print(target[1])
+        print("### Starting enumeration for {} ...".format(target[1]))
+
+        ##### Define A record
+        r = dns_query(target[3], 'A')
+        arecord = ''
+        for data in r:
+            arecord += "{0} ".format(data)
+        arecord_list = arecord.split(" ") # --> use this list for IPADDRESS field in domains table
+
+        r = dns_query(target[3], 'NS')
+        nsrecord = ''
+        for data in r:
+            nsrecord += "{0} ".format(data)
+        nsrecord_list = nsrecord.split(" ") # --> use this list for NS field in domains table
+
+        print("DEBUG: {}\t{}\t".format(arecord_list, nsrecord_list))
 
 '''
     # check A record
