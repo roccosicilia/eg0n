@@ -56,12 +56,13 @@ if __name__ == "__main__":
             capec = str(json_data["capec"])
             capec = capec.replace("'", "\\'")
 
-            if today in date_modified:
+            if today in date_modified or len(sys.argv) >= 2:
                 # INSERT data
                 query = "INSERT INTO `cve` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
                 dbquery(query)
                 print("Add CVE {}".format(cveid))
             else:
                 print("No CVE.")
+
         except:
             print("JSON error.")
