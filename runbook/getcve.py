@@ -32,8 +32,8 @@ if __name__ == "__main__":
 
         # CVE data
         cveid = json_data["id"]
-        data_published = json_data["Published"]
-        data_modified = json_data["Modified"]
+        date_published = json_data["Published"]
+        date_modified = json_data["Modified"]
         cvss = json_data["cvss"]
         cwe = json_data["cwe"].replace("'", "\\'")
         summary = json_data["summary"].replace("'", "\\'")
@@ -46,6 +46,6 @@ if __name__ == "__main__":
         capec = capec.replace("'", "\\'")
 
         # INSERT data
-        query = "INSERT INTO `cve` (cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec)
+        query = "INSERT INTO `cve` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
         print(query)
         dbquery(query)
