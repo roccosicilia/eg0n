@@ -38,8 +38,10 @@ if __name__ == "__main__":
         item = str(item)
         json_data = item.replace("'", "\"")
         json_data = json_data.replace("None", '""')
-        json_data = json.loads(json_data)
-        # print(type(json_data))
+        try:
+            json_data = json.loads(json_data)
+        except:
+            print(str(json_data))
 
         # CVE data
         cveid = json_data["id"]
