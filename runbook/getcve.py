@@ -1,4 +1,5 @@
-import requests, json, mysql.connector
+import requests, json, mysql.connector, sys
+from datetime import date
 from config import *
 
 def getCVE(url):
@@ -21,7 +22,16 @@ def dbquery(db_insert):
     myconn.commit()
 
 if __name__ == "__main__":
-    url = 'https://cve.circl.lu/api/last/2'
+
+    t = date.today()
+    today = t.strftime("%Y-%m-%d")
+
+    if sys.argv[1] != None:
+        last = 20
+    else:
+        last = sys.argv[1]
+
+    url = 'https://cve.circl.lu/api/last/{}'.format(last)
     list_data = json.loads(getCVE(url))
 
     for item in list_data:
@@ -46,7 +56,10 @@ if __name__ == "__main__":
         capec = str(json_data["capec"])
         capec = capec.replace("'", "\\'")
 
-        # INSERT data
-        query = "INSERT INTO `cve` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
-        print(query)
-        dbquery(query)
+        if today in date_modified:
+            # INSERT data
+            query = "INSERT INTO `cve` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
+            dbquery(query)
+            print("Add CVE {}".format(cveid))
+        else:
+            print("No CVE.")
