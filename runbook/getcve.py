@@ -26,7 +26,7 @@ if __name__ == "__main__":
     t = date.today()
     today = t.strftime("%Y-%m-%d")
 
-    if sys.argv[1] != None:
+    if len(sys.argv) < 2:
         last = 20
     else:
         last = sys.argv[1]
