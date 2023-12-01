@@ -46,6 +46,6 @@ if __name__ == "__main__":
         capec = capec.replace("'", "\\'")
 
         # INSERT data
-        query = "INSERT INTO `cve` (cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ({}, {}, {}, {}, {}, {}, {}, {}, {})".format(cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec)
+        query = "INSERT INTO `cve` (cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, data_published, data_modified, cvss, cwe, references_list, cpe, summary, capec)
         print(query)
         dbquery(query)
