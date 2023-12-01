@@ -36,7 +36,8 @@ if __name__ == "__main__":
         data_modified = json_data["Modified"]
         cvss = json_data["cvss"]
         cwe = json_data["cwe"].replace("'", "\\'")
-        references_list = json_data["references"].replace("'", "\\'")
+        references_list = str(json_data["references"])
+        references_list = references_list.replace("'", "\\'")
         cpe = json_data["vulnerable_product"].replace("'", "\\'")
         summary = json_data["summary"].replace("'", "\\'")
         capec = json_data["capec"].replace("'", "\\'")
