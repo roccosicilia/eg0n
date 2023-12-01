@@ -41,7 +41,7 @@ if __name__ == "__main__":
         try:
             json_data = json.loads(json_data)
         except:
-            print(str(json_data))
+            print("JSON error.")
 
         # CVE data
         cveid = json_data["id"]
