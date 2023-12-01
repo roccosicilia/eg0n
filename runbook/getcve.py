@@ -37,7 +37,8 @@ if __name__ == "__main__":
     for item in list_data:
         item = str(item)
         json_data = item.replace("'", "\"")
-        json_data = json_data.replace("None", '""')
+        json_data = json_data.replace('"', '')
+        # json_data = json_data.replace("None", '""')
         try:
             json_data = json.loads(json_data)
 
