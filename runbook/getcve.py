@@ -18,6 +18,7 @@ def dbquery(db_insert):
     myconn = mysql.connector.connect(host=mydb["host"], user=mydb["user"], password=mydb["pass"], database=mydb["name"], auth_plugin='mysql_native_password')
     mycursor = myconn.cursor()
     mycursor.execute(db_insert)
+    myconn.commit()
 
 if __name__ == "__main__":
     url = 'https://cve.circl.lu/api/last/2'
