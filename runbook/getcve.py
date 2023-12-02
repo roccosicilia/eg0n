@@ -33,17 +33,17 @@ if __name__ == "__main__":
         last = sys.argv[1]
 
     url = 'https://cve.circl.lu/api/last/{}'.format(last)
-    try:
-        list_data = json.loads(getCVE(url))
-    except:
-        print(getCVE(url))
+    list_data = json.loads(getCVE(url))
 
     for item in list_data:
         item = str(item)
         json_data = item.replace("'", "\"")
         json_data = json_data.replace("None", '""')
 
-        json_data = json.loads(json_data)
+        try:
+            json_data = json.loads(json_data)
+        except:
+            print(json_data)
 
         # CVE data
         cveid = json_data["id"]
