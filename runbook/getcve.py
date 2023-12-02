@@ -16,11 +16,18 @@ def getCVE(url):
         print(f"Errore durante la richiesta: {e}")
         return None
 
-def dbquery(db_insert):
+def db_insert(db_insert): ### WRITE
     myconn = mysql.connector.connect(host=mydb["host"], user=mydb["user"], password=mydb["pass"], database=mydb["name"], auth_plugin='mysql_native_password')
     mycursor = myconn.cursor()
     mycursor.execute(db_insert)
     myconn.commit()
+
+def db_select(db_select): ### READ
+    myconn = mysql.connector.connect(host=mydb["host"], user=mydb["user"], password=mydb["pass"], database=mydb["name"], auth_plugin='mysql_native_password')
+    mycursor = myconn.cursor()
+    mycursor.execute(db_select)
+    result = mycursor.fetchall()
+    return result
 
 if __name__ == "__main__":
 
@@ -42,6 +49,7 @@ if __name__ == "__main__":
         # json_data = json_data.replace("\"", '')
 
         try:
+            # read JSON
             json_data = json.loads(json_data)
 
             # CVE data
@@ -59,15 +67,20 @@ if __name__ == "__main__":
             capec = str(json_data["capec"])
             capec = capec.replace("'", "\\'")
 
+            query = "SELECT * FROM `cve_list` WHERE cveid = '{}' AND date_modified = '{}'".format(cveid, date_modified)
+            result = db_select(query)
+            number = len(result)
+            print(number)
+
             if today in date_modified or len(sys.argv) >= 2:
                 # INSERT data
                 query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
-                dbquery(query)
+                db_insert(query)
                 print("Add CVE {}".format(cveid))
             else:
                 print("No CVE.")
         except:
             # dump full content
             query = "INSERT INTO `cve_list` (raw) VALUES ('{}')".format(str(json_data))
-            dbquery(query)
+            db_insert(query)
             print("Add raw data")
