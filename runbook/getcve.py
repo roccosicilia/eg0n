@@ -33,7 +33,10 @@ if __name__ == "__main__":
         last = sys.argv[1]
 
     url = 'https://cve.circl.lu/api/last/{}'.format(last)
-    list_data = json.loads(getCVE(url))
+    try:
+        list_data = json.loads(getCVE(url))
+    except:
+        print(getCVE(url))
 
     for item in list_data:
         item = str(item)
