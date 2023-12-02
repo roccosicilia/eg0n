@@ -68,6 +68,6 @@ if __name__ == "__main__":
                 print("No CVE.")
         except:
             # dump full content
-            query = "INSERT INTO `cve_list` (raw) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(str(json_data))
+            query = "INSERT INTO `cve_list` (raw) VALUES ('{}')".format(str(json_data))
             dbquery(query)
             print("Add raw data")
