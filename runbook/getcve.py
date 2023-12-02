@@ -65,4 +65,5 @@ if __name__ == "__main__":
                 print("No CVE.")
 
         except:
-            print("JSON error.")
+            print("### JSON error.")
+            print("### {}".format(str(json_data)))
