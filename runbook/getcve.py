@@ -66,5 +66,4 @@ if __name__ == "__main__":
 
         except:
             print("### JSON error.")
-            json_data = json.loads(json_data)
-            print("### {}".format(json_data))
+
