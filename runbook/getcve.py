@@ -41,14 +41,14 @@ if __name__ == "__main__":
 
     url = 'https://cve.circl.lu/api/last/{}'.format(last)
     list_data = json.loads(getCVE(url))
+    print("###")
+    print(list_data)
+    print("###")
 
     for item in list_data:
         item = str(item)
         json_data = item.replace("'", "\"")
         json_data = json_data.replace("None", '""')
-        print("###")
-        print(json_data)
-        print("###")
 
         try:
             # read JSON
