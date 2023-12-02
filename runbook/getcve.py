@@ -42,8 +42,7 @@ if __name__ == "__main__":
         json_data = json_data.replace("\"", '')
 
         try:
-            # json_data = json.loads(json_data)
-            son_data = json.dumps(json_data)
+            json_data = json.loads(json_data)
         except:
             print(json_data)
 
