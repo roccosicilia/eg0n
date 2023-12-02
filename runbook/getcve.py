@@ -7,7 +7,7 @@ def getCVE(url):
         response = requests.get(url)
         if response.status_code == 200:
             data = response.text.replace("'", "`")
-            data = r'{}'.format(data)
+            data = data.replace('\\"', '--')
             return data
         else:
             print(f"Errore nella richiesta. Status code: {response.status_code}")
