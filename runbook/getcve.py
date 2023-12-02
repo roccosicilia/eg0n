@@ -46,7 +46,9 @@ if __name__ == "__main__":
         item = str(item)
         json_data = item.replace("'", "\"")
         json_data = json_data.replace("None", '""')
-        # json_data = json_data.replace("\"", '')
+        print("###")
+        print(json_data)
+        print("###")
 
         try:
             # read JSON
@@ -70,9 +72,9 @@ if __name__ == "__main__":
             query = "SELECT * FROM `cve_list` WHERE cveid = '{}' AND date_modified = '{}'".format(cveid, date_modified)
             result = db_select(query)
             number = len(result)
-            print("{} {}".format(number, query))
+            # print("{} {}".format(number, query)) # debug
 
-            if number == 1:
+            if number == 0:
                 # INSERT data
                 query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
                 db_insert(query)
