@@ -40,16 +40,15 @@ if __name__ == "__main__":
 
     url = 'https://cve.circl.lu/api/last/1'
 
-    cveid = curlCVE(url, 'id')
-    cveid = jclean(cveid)
-    date_published = curlCVE(url, 'Published')
-    date_modified = curlCVE(url, 'Modified')
-    cvss = curlCVE(url, 'cvss')
-    cwe = curlCVE(url, 'cwe')
-    summary = curlCVE(url, 'summary')
-    references_list = curlCVE(url, 'references')
-    cpe = curlCVE(url, 'vulnerable_product')
-    capec = curlCVE(url, 'capec')
+    cveid = jclean(curlCVE(url, 'id'))
+    date_published = jclean(curlCVE(url, 'Published'))
+    date_modified = jclean(curlCVE(url, 'Modified'))
+    cvss = jclean(curlCVE(url, 'cvss'))
+    cwe = jclean(curlCVE(url, 'cwe'))
+    summary = jclean(curlCVE(url, 'summary'))
+    references_list = jclean(curlCVE(url, 'references'))
+    cpe = jclean(curlCVE(url, 'vulnerable_product'))
+    capec = jclean(curlCVE(url, 'capec'))
 
     # INSERT data
     query = "INSERT INTO `cve` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
