@@ -70,6 +70,7 @@ if __name__ == "__main__":
             query = "SELECT * FROM `cve_list` WHERE cveid = '{}' AND date_modified = '{}'".format(cveid, date_modified)
             result = db_select(query)
             number = len(result)
+            print("{} {}".format(number, query))
 
             if number == 1:
                 # INSERT data
