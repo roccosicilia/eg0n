@@ -43,28 +43,31 @@ if __name__ == "__main__":
 
         try:
             json_data = json.loads(json_data)
+
+            # CVE data
+            cveid = json_data["id"]
+            date_published = json_data["Published"]
+            date_modified = json_data["Modified"]
+            cvss = json_data["cvss"]
+            cwe = json_data["cwe"].replace("'", "\\'")
+            summary = json_data["summary"].replace("'", "\\'")
+
+            references_list = str(json_data["references"])
+            references_list = references_list.replace("'", "\\'")
+            cpe = str(json_data["vulnerable_product"])
+            cpe = cpe.replace("'", "\\'")
+            capec = str(json_data["capec"])
+            capec = capec.replace("'", "\\'")
+
+            if today in date_modified or len(sys.argv) >= 2:
+                # INSERT data
+                query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
+                dbquery(query)
+                print("Add CVE {}".format(cveid))
+            else:
+                print("No CVE.")
         except:
-            print(json_data)
-
-        # CVE data
-        cveid = json_data["id"]
-        date_published = json_data["Published"]
-        date_modified = json_data["Modified"]
-        cvss = json_data["cvss"]
-        cwe = json_data["cwe"].replace("'", "\\'")
-        summary = json_data["summary"].replace("'", "\\'")
-
-        references_list = str(json_data["references"])
-        references_list = references_list.replace("'", "\\'")
-        cpe = str(json_data["vulnerable_product"])
-        cpe = cpe.replace("'", "\\'")
-        capec = str(json_data["capec"])
-        capec = capec.replace("'", "\\'")
-
-        if today in date_modified or len(sys.argv) >= 2:
-            # INSERT data
-            query = "INSERT INTO `cve` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
+            # dump full content
+            query = "INSERT INTO `cve_list` (raw) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(str(json_data))
             dbquery(query)
-            print("Add CVE {}".format(cveid))
-        else:
-            print("No CVE.")
+            print("Add raw data")
