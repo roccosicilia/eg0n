@@ -27,6 +27,11 @@ def db_insert(db_insert):
     mycursor.execute(db_insert)
     myconn.commit()
 
+def jclean(j):
+    out = j.split(":")
+    out = out[1].replace('"', '')
+    return out
+
 if __name__ == "__main__":
 
     t = date.today()
@@ -35,6 +40,7 @@ if __name__ == "__main__":
     url = 'https://cve.circl.lu/api/last/1'
 
     cveid = curlCVE(url, 'id')
+    cveid = jclean(cveid)
     date_published = curlCVE(url, 'Published')
     date_modified = curlCVE(url, 'Modified')
     cvss = curlCVE(url, 'cvss')
