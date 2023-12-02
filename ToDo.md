@@ -2,7 +2,7 @@
 
 ## CVE archive for analysis and exploiting
 
- - Get CVE from cve.circl.lu
+ - Get CVE from cve.circl.lu --> check for https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
 
  - WebGui
   - Read / Search CVE
