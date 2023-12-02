@@ -31,6 +31,8 @@ def jclean(j):
     j = str(j)
     out = j.split(":")
     out = out[1].replace('"', '')
+    out = out.replace(",\n'", '')
+    out = out.lstrip()
     return out
 
 if __name__ == "__main__":
