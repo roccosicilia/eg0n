@@ -28,6 +28,7 @@ def db_insert(db_insert):
     myconn.commit()
 
 def jclean(j):
+    j = str(j)
     out = j.split(":")
     out = out[1].replace('"', '')
     return out
