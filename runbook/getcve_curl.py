@@ -52,5 +52,5 @@ if __name__ == "__main__":
 
     # INSERT data
     query = "INSERT INTO `cve` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
-    db_insert(query)
+    #db_insert(query)
     print("Add CVE {}".format(cveid))
