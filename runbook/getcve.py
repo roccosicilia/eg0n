@@ -70,15 +70,14 @@ if __name__ == "__main__":
             query = "SELECT * FROM `cve_list` WHERE cveid = '{}' AND date_modified = '{}'".format(cveid, date_modified)
             result = db_select(query)
             number = len(result)
-            print(number)
 
-            if today in date_modified or len(sys.argv) >= 2:
+            if number == 1:
                 # INSERT data
                 query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
                 db_insert(query)
                 print("Add CVE {}".format(cveid))
             else:
-                print("No CVE.")
+                print("Duplicated CVE.")
         except:
             # dump full content
             query = "INSERT INTO `cve_list` (raw) VALUES ('{}')".format(str(json_data))
