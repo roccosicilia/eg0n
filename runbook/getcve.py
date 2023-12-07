@@ -6,9 +6,9 @@ def getCVE(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            data = response.text.replace("'", "`")
-            data = data.replace('\\"', '--')
-            return data
+            response = requests.get(url)
+            json_data = response.json()
+            return json_data
         else:
             print(f"Errore nella richiesta. Status code: {response.status_code}")
             return None
@@ -40,49 +40,32 @@ if __name__ == "__main__":
         last = sys.argv[1]
 
     url = 'https://cve.circl.lu/api/last/{}'.format(last)
-    list_data = json.loads(getCVE(url))
-    print("###")
-    print(list_data)
-    print("###")
+    json_data = getCVE(url)
 
-    for item in list_data:
-        item = str(item)
-        json_data = item.replace("'", "\"")
-        json_data = json_data.replace("None", '""')
+    for item in json_data:
 
+        cveid = item["id"]
+        date_published = item["Published"]
+        date_modified = item["Modified"]
+        cvss = item["cvss"]
+        cwe = item["cwe"]
+        summary = item["summary"]
+        references_list = item["references"]
+        cpe = item["vulnerable_product"]
         try:
-            # read JSON
-            json_data = json.loads(json_data)
-
-            # CVE data
-            cveid = json_data["id"]
-            date_published = json_data["Published"]
-            date_modified = json_data["Modified"]
-            cvss = json_data["cvss"]
-            cwe = json_data["cwe"].replace("'", "\\'")
-            summary = json_data["summary"].replace("'", "\\'")
-
-            references_list = str(json_data["references"])
-            references_list = references_list.replace("'", "\\'")
-            cpe = str(json_data["vulnerable_product"])
-            cpe = cpe.replace("'", "\\'")
-            capec = str(json_data["capec"])
-            capec = capec.replace("'", "\\'")
-
-            query = "SELECT * FROM `cve_list` WHERE cveid = '{}' AND date_modified = '{}'".format(cveid, date_modified)
-            result = db_select(query)
-            number = len(result)
-            # print("{} {}".format(number, query)) # debug
-
-            if number == 0:
-                # INSERT data
-                query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
-                db_insert(query)
-                print("Add CVE {}".format(cveid))
-            else:
-                print("Duplicated CVE.")
+            capec = item["capec"]
         except:
-            # dump full content
-            query = "INSERT INTO `cve_list` (raw) VALUES ('{}')".format(str(json_data))
+            capec = ''
+
+        query = "SELECT * FROM `cve_list` WHERE cveid = '{}' AND date_modified = '{}'".format(cveid, date_modified)
+        result = db_select(query)
+        number = len(result)
+        # print("{} {}".format(number, query)) # debug
+
+        if number == 0:
+            # INSERT data
+            query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
             db_insert(query)
-            print("Add raw data")
+            print("Add CVE {}".format(cveid))
+        else:
+            print("Duplicated CVE.")
