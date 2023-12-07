@@ -49,7 +49,7 @@ if __name__ == "__main__":
         date_modified = item["Modified"]
         cvss = item["cvss"]
         cwe = item["cwe"]
-        summary = item["summary"]
+        summary = item["summary"].replace("'", "\"")
         references_list = str(item["references"]).replace("'", "\"")
         cpe = str(item["vulnerable_product"]).replace("'", "\"")
         try:
