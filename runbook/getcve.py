@@ -63,9 +63,12 @@ if __name__ == "__main__":
         # print("{} {}".format(number, query)) # debug
 
         if number == 0:
-            # INSERT data
-            query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
-            db_insert(query)
-            print("Add CVE {}".format(cveid))
+            try:
+                # INSERT data
+                query = "INSERT INTO `cve_list` (cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(cveid, date_published, date_modified, cvss, cwe, references_list, cpe, summary, capec)
+                db_insert(query)
+                print("Add CVE {}".format(cveid))
+            except:
+                print("DEBUG QUERY ### {}".format(query))
         else:
             print("Duplicated CVE.")
