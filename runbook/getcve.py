@@ -50,10 +50,10 @@ if __name__ == "__main__":
         cvss = item["cvss"]
         cwe = item["cwe"]
         summary = item["summary"]
-        references_list = item["references"]
-        cpe = item["vulnerable_product"]
+        references_list = item["references"].replace("'", "\"")
+        cpe = item["vulnerable_product"].replace("'", "\"")
         try:
-            capec = item["capec"]
+            capec = item["capec"].replace("'", "\"")
         except:
             capec = ''
 
