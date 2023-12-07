@@ -69,6 +69,8 @@ if __name__ == "__main__":
                 db_insert(query)
                 print("Add CVE {}".format(cveid))
             except:
-                print("DEBUG QUERY ### {}".format(query))
+                print("#################")
+                print("# DEBUG QUERY ### {}".format(query))
+                print("#################")
         else:
             print("Duplicated CVE.")
