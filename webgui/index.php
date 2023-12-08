@@ -6,7 +6,7 @@ $content = "#### TEST PAGE ####";
 
 
 echo $header;
-add_body($content);
+echo add_body($content);
 echo $footer;
 
 ?>
