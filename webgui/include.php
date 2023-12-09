@@ -1,6 +1,11 @@
 <?php
 
 /**************************************************************************************************
+ * DB conn (change database connection data)
+ *************************************************************************************************/
+$mysqli = new mysqli('localhost', 'egon  ', 'egon', 'egon');
+
+/**************************************************************************************************
  * page header 
  *************************************************************************************************/
 
@@ -84,54 +89,19 @@ $header .= "<div class=\"pulse-css\"></div>\n";
 $header .= "</a>\n";
 $header .= "<div class=\"dropdown-menu dropdown-menu-right\">\n";
 $header .= "<ul class=\"list-unstyled\">\n";
-$header .= "<li class=\"media dropdown-item\">\n";
-$header .= "<span class=\"success\"><i class=\"ti-user\"></i></span>\n";
-$header .= "<div class=\"media-body\">\n";
-$header .= "<a href=\"#\">\n";
-$header .= "<p><strong>Martin</strong> has added a <strong>customer</strong> Successfully\n";
-$header .= "</p>\n";
-$header .= "</a>\n";
-$header .= "</div>\n";
-$header .= "<span class=\"notify-time\">3:20 am</span>\n";
-$header .= "</li>\n";
-$header .= "<li class=\"media dropdown-item\">\n";
-$header .= "<span class=\"primary\"><i class=\"ti-shopping-cart\"></i></span>\n";
-$header .= "<div class=\"media-body\">\n";
-$header .= "<a href=\"#\">\n";
-$header .= "<p><strong>Jennifer</strong> purchased Light Dashboard 2.0.</p>\n";
-$header .= "</a>\n";
-$header .= "</div>\n";
-$header .= "<span class=\"notify-time\">3:20 am</span>\n";
-$header .= "</li>\n";
-$header .= "<li class=\"media dropdown-item\">\n";
-$header .= "<span class=\"danger\"><i class=\"ti-bookmark\"></i></span>\n";
-$header .= "<div class=\"media-body\">\n";
-$header .= "<a href=\"#\">\n";
-$header .= "<p><strong>Robin</strong> marked a <strong>ticket</strong> as unsolved.\n";
-$header .= "</p>\n";
-$header .= "</a>\n";
-$header .= "</div>\n";
-$header .= "<span class=\"notify-time\">3:20 am</span>\n";
-$header .= "</li>\n";
-$header .= "<li class=\"media dropdown-item\">\n";
-$header .= "<span class=\"primary\"><i class=\"ti-heart\"></i></span>\n";
-$header .= "<div class=\"media-body\">\n";
-$header .= "<a href=\"#\">\n";
-$header .= "<p><strong>David</strong> purchased Light Dashboard 1.0.</p>\n";
-$header .= "</a>\n";
-$header .= "</div>\n";
-$header .= "<span class=\"notify-time\">3:20 am</span>\n";
-$header .= "</li>\n";
-$header .= "<li class=\"media dropdown-item\">\n";
-$header .= "<span class=\"success\"><i class=\"ti-image\"></i></span>\n";
-$header .= "<div class=\"media-body\">\n";
-$header .= "<a href=\"#\">\n";
-$header .= "<p><strong> James.</strong> has added a<strong>customer</strong> Successfully\n";
-$header .= "</p>\n";
-$header .= "</a>\n";
-$header .= "</div>\n";
-$header .= "<span class=\"notify-time\">3:20 am</span>\n";
-$header .= "</li>\n";
+
+### Notification block
+$query = "SELECT * FROM `notifications` ORDER BY id ASC LIMIT 0, 5";
+$result = mysqli->query($query);
+while($row = $result->fetch_assoc)
+{
+    $header .= "<li class=\"media dropdown-item\">\n";
+    $header .= "<span class=\"success\"><i class=\"ti-user\"></i></span>\n";
+    $header .= "<div class=\"media-body\"><a href=\"#\">" . $row["message"] . "</a></div>\n";
+    $header .= "<span class=\"notify-time\">" . $row["date"] . "</span>\n";
+    $header .= "</li>\n";
+}
+
 $header .= "</ul>\n";
 $header .= "<a class=\"all-notification\" href=\"#\">See all notifications <i\n";
 $header .= "class=\"ti-arrow-right\"></i></a>\n";
