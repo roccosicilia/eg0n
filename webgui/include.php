@@ -92,7 +92,7 @@ $header .= "<ul class=\"list-unstyled\">\n";
 
 ### Notification block
 $query = "SELECT * FROM `notifications` ORDER BY id ASC LIMIT 0, 5";
-$result = mysqli->query($query);
+$result = $mysqli->query($query);
 while($row = $result->fetch_assoc)
 {
     $header .= "<li class=\"media dropdown-item\">\n";
