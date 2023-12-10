@@ -14,12 +14,12 @@ def cwe_count():
 
     for row in result:
         if (row[1] >= 10):
-            query = "SELECT * FROM `cwe_stats` WHERE cwe = {}".format(row[0])
+            query = "SELECT * FROM `cwe_stats` WHERE cwe = '{}'".format(row[0])
             mycursor.execute(query)
             result = mycursor.fetchall()
             if len(result) >= 1:
                 # update DB
-                query_update = "UPDATE `cwe_stats` SET count = {} WHERE cwe = {}".format(row[1], row[0])
+                query_update = "UPDATE `cwe_stats` SET count = '{}' WHERE cwe = '{}'".format(row[1], row[0])
                 mycursor.execute(query_update)
                 myconn.commit()
             else:
