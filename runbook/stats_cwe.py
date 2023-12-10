@@ -24,7 +24,7 @@ def cwe_count():
                 myconn.commit()
             else:
                 # insert new cwe
-                query_insert = "INSERT INTO `cwe_stats` (cwe, count) VALUES ('{}', '{}')".format(row[0], row[1])
+                query_insert = "INSERT INTO `cwe_stats` (cwe, cwe_count) VALUES ('{}', '{}')".format(row[0], row[1])
                 mycursor.execute(query_insert)
                 myconn.commit()
 
