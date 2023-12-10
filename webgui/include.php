@@ -50,7 +50,7 @@ $header .= "<div class=\"nav-header\">\n";
 $header .= "<a href=\"index.php\" class=\"brand-logo\">\n";
 $header .= "<img class=\"logo-abbr\" src=\"./images/logo.png\" alt=\"\">\n";
 $header .= "<img class=\"logo-compact\" src=\"./images/logo-text.png\" alt=\"\">\n";
-/$header .= "<img class=\"brand-title\" src=\"./images/logo-text.png\" alt=\"\">\n";
+$header .= "<img class=\"brand-title\" src=\"./images/logo-text.png\" alt=\"\">\n";
 $header .= "</a>\n";
 $header .= "<div class=\"nav-control\">\n";
 $header .= "<div class=\"hamburger\">\n";
