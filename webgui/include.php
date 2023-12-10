@@ -1,9 +1,9 @@
 <?php
 
 /**************************************************************************************************
- * DB conn (change database connection data)
+ * DB conn (change database connection data, default is 'egon')
  *************************************************************************************************/
-$mysqli = new mysqli('localhost', 'egon  ', 'egon', 'egon');
+$mysqli = new mysqli('localhost', 'egon', 'egon', 'egon');
 
 /**************************************************************************************************
  * page header 
