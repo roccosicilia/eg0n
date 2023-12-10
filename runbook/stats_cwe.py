@@ -19,14 +19,16 @@ def cwe_count():
             result = mycursor.fetchall()
             if len(result) >= 1:
                 # update DB
-                query_update = "UPDATE `cwe_stats` SET count = '{}' WHERE cwe = '{}'".format(row[1], row[0])
+                query_update = "UPDATE `cwe_stats` SET cwe_count = '{}' WHERE cwe = '{}'".format(row[1], row[0])
                 mycursor.execute(query_update)
                 myconn.commit()
+                print("Update cwe records.")
             else:
                 # insert new cwe
                 query_insert = "INSERT INTO `cwe_stats` (cwe, cwe_count) VALUES ('{}', '{}')".format(row[0], row[1])
                 mycursor.execute(query_insert)
                 myconn.commit()
+                print("NEW cwe record!")
 
 if __name__ == "__main__":
 
