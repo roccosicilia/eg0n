@@ -97,7 +97,7 @@ while($row = $result->fetch_assoc())
 {
     $header .= "<li class=\"media dropdown-item\">\n";
     $header .= "<span class=\"success\"><i class=\"ti-user\"></i></span>\n";
-    $header .= "<div class=\"media-body\"><a href=\"#\">" . $row["message"] . "</a></div>\n";
+    $header .= "<div class=\"media-body\"><a href=\"#\"><p>" . $row["message"] . "</p></a></div>\n";
     $header .= "<span class=\"notify-time\">" . $row["date"] . "</span>\n";
     $header .= "</li>\n";
 }
