@@ -11,7 +11,7 @@
         type: 'bar',
         data: {
             defaultFontFamily: 'Poppins',
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "XXX"],
             datasets: [
                 {
                     label: "My First dataset",
