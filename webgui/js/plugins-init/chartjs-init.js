@@ -11,11 +11,11 @@
         type: 'bar',
         data: {
             defaultFontFamily: 'Poppins',
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "XXX"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "XXX", "TEST"],
             datasets: [
                 {
                     label: "My First dataset",
-                    data: [65, 59, 80, 81, 56, 55, 99],
+                    data: [65, 59, 80, 81, 56, 55, 99, 10],
                     borderColor: 'rgba(26, 51, 213, 1)',
                     borderWidth: "0",
                     backgroundColor: 'rgba(26, 51, 213, 1)'
