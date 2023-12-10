@@ -107,6 +107,8 @@ $header .= "<a class=\"all-notification\" href=\"#\">See all notifications <i\n"
 $header .= "class=\"ti-arrow-right\"></i></a>\n";
 $header .= "</div>\n";
 $header .= "</li>\n";
+
+/*
 $header .= "<li class=\"nav-item dropdown header-profile\">\n";
 $header .= "<a class=\"nav-link\" href=\"#\" role=\"button\" data-toggle=\"dropdown\">\n";
 $header .= "<i class=\"mdi mdi-account\"></i>\n";
@@ -126,6 +128,8 @@ $header .= "<span class=\"ml-2\">Logout </span>\n";
 $header .= "</a>\n";
 $header .= "</div>\n";
 $header .= "</li>\n";
+*/
+
 $header .= "</ul>\n";
 $header .= "</div>\n";
 $header .= "</nav>\n";
