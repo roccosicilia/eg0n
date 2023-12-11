@@ -3,23 +3,14 @@
 include("./include.php");
 
 // intro banner
-$content  = "<!--**********************************\n";
-$content .= "Content body start\n";
-$content .= "***********************************-->\n";
-$content .= "<div class=\"content-body\">\n";
-$content .= "<div class=\"container-fluid\">\n";
 $content .= "<div class=\"row page-titles mx-0\">\n";
 $content .= "<div class=\"col-sm-6\">\n";
 $content .= "<div class=\"welcome-text\">\n";
-$content .= "<h4>Hi, welcome back!</h4>\n";
-$content .= "<p class=\"mb-0\">Your business dashboard template</p>\n";
+$content .= "<h4>Main Dashboard</h4>\n";
+$content .= "<p class=\"mb-0\">Summarized data and charts</p>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "<div class=\"col-sm-6 justify-content-sm-end mt-2 mt-sm-0 d-flex\">\n";
-$content .= "<ol class=\"breadcrumb\">\n";
-$content .= "<li class=\"breadcrumb-item\"><a href=\"javascript:void(0)\">Charts</a></li>\n";
-$content .= "<li class=\"breadcrumb-item active\"><a href=\"javascript:void(0)\">ChartJS</a></li>\n";
-$content .= "</ol>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "<!-- row -->\n";
