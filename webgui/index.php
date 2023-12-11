@@ -34,7 +34,7 @@ $content .= "</div>\n";
 $content .= "<!-- Chart ChartJS plugin files -->\n";
 $content .= "<script src=\"./vendor/chart.js/Chart.bundle.min.js\"></script>\n";
 
-$content .= "<script>\n";
+$content .= "<script language=\"javascript\" type=\"text/javascript\">\n";
 $content .= "(function($) {\n";
 $content .= "\"use strict\"\n";
 $content .= "//basic bar chart\n";
