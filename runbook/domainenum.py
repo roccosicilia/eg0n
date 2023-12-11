@@ -78,7 +78,7 @@ if __name__ == "__main__":
         '''
 
         print("#"*100)
-        print("# {}\n#{}\n#{}\n#{}\n".format(arecord_list, nsrecord_list, mxrecord_list, txtrecord_list))
+        print("# {}\n# {}\n# {}\n# {}\n".format(arecord_list, nsrecord_list, mxrecord_list, txtrecord_list))
 
 
 '''
