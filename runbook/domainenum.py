@@ -74,7 +74,7 @@ if __name__ == "__main__":
             txtrecord_list = ''
 
     
-        query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord_list, nsrecord_list, mxrecord_list, txtrecord_list)
+        query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord, nsrecord, mxrecord, txtrecord)
         dbinsert(query)
 
         print("#"*100)
