@@ -78,19 +78,29 @@ $content .= "<script src=\"./vendor/chart.js/Chart.bundle.min.js\"></script>\n";
 $content .= "<script>\n";
 $content .= "(function($) {\n";
 $content .= "\"use strict\"\n";
-$content .= "const barChart_11 = document.getElementById(\"barChart_test\").getContext('2d');\n";
-$content .= "barChart_11.height = 100;\n";
-$content .= "new Chart(barChart_11, {\n";
+$content .= "const barChart_1 = document.getElementById(\"barChart_test\").getContext('2d');\n";
+$content .= "barChart_1.height = 100;\n";
+$content .= "new Chart(barChart_1, {\n";
 $content .= "type: 'bar',\n";
 $content .= "data: { defaultFontFamily: 'Poppins',\n";
 
 // generate list of label
-$content .= "labels: [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"TEST\"],\n";
-
+$content .= "labels: [ ";
+$sql_cweChart = "SELECT * FROM `cwe_stats` ORDER BY id";
+$result = $mysqli->query($sql_cweChart);
+while($row = $result->fetch_assoc())
+{
+    $content .= "\"" . $row["cwe"] . "\", "
+}
+$content .= "],\n";
 $content .= "datasets: [{ label: \"CWE count\",\n";
-
 // generate data
-$content .= "data: [65, 59, 80, 81, 56, 55, 40, 10],\n";
+$content .= "data: [ ";
+while($row = $result->fetch_assoc())
+{
+    $content .= $row["cwe_count"] . ", "
+}
+$content .= "],\n";
 
 $content .= "borderColor: 'rgba(26, 51, 213, 1)',\n";
 $content .= "borderWidth: \"0\",\n";
