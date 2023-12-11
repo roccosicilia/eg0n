@@ -14,8 +14,6 @@ $content .= "<div class=\"col-sm-6 justify-content-sm-end mt-2 mt-sm-0 d-flex\">
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "<!-- row -->\n";
-$content .= "<div class=\"row\">\n";
-$content .= "<div class=\"col-12\">\n";
 
 // Target list
 $content .= "<div class=\"row\">\n";
