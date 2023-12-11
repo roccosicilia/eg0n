@@ -25,7 +25,7 @@ $content .= "<div class=\"card-header\">\n";
 $content .= "<h4 class=\"card-title\">CWE stats</h4>\n";
 $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
-$content .= "<canvas id=\"barChart_test\"></canvas>\n";
+$content .= "<canvas id=\"barChart_cwe\"></canvas>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
@@ -34,10 +34,10 @@ $content .= "</div>\n";
 $content .= "<div class=\"col-lg-6 col-sm-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\">\n";
-$content .= "<h4 class=\"card-title\">Gradient Bar Chart</h4>\n";
+$content .= "<h4 class=\"card-title\">CVE stats</h4>\n";
 $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
-$content .= "<canvas id=\"barChart_2\"></canvas>\n";
+$content .= "<canvas id=\"barChart_cve\"></canvas>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
@@ -75,15 +75,15 @@ $content .= "<script src=\"./js/custom.min.js\"></script>\n";
 $content .= "<!-- Chart ChartJS plugin files -->\n";
 $content .= "<script src=\"./vendor/chart.js/Chart.bundle.min.js\"></script>\n";
 
+/* BEGIN CWE DATA */
 $content .= "<script>\n";
 $content .= "(function($) {\n";
 $content .= "\"use strict\"\n";
-$content .= "const barChart_1 = document.getElementById(\"barChart_test\").getContext('2d');\n";
+$content .= "const barChart_1 = document.getElementById(\"barChart_cwe\").getContext('2d');\n";
 $content .= "barChart_1.height = 100;\n";
 $content .= "new Chart(barChart_1, {\n";
 $content .= "type: 'bar',\n";
 $content .= "data: { defaultFontFamily: 'Poppins',\n";
-
 // generate list of label
 $content .= "labels: [ ";
 $sql_cweChart = "SELECT cwe FROM `cwe_stats` ORDER BY id";
@@ -110,6 +110,44 @@ $content .= "backgroundColor: 'rgba(26, 51, 213, 1)'\n";
 $content .= "}]},\n";
 $content .= "options: { legend: false, scales: { yAxes: [{ ticks: { beginAtZero: true } }], xAxes: [{ barPercentage: 0.5 }] } } }); })(jQuery);\n";
 $content .= "</script>\n";
+/* END CWE DATA */
+
+/* BEGIN CVE DATA */
+$content .= "<script>\n";
+$content .= "(function($) {\n";
+$content .= "\"use strict\"\n";
+$content .= "const barChart_2 = document.getElementById(\"barChart_cve\").getContext('2d');\n";
+$content .= "barChart_2.height = 100;\n";
+$content .= "new Chart(barChart_2, {\n";
+$content .= "type: 'bar',\n";
+$content .= "data: { defaultFontFamily: 'Poppins',\n";
+// generate list of label
+$content .= "labels: [ ";
+$sql_cveChart = "SELECT date_published FROM `cve_stats` ORDER BY id DESC LIMIT 0, 15";
+$result = $mysqli->query($sql_cveChart);
+while($row = $result->fetch_assoc())
+{
+    $content .= "\"" . $row["date_published"] . "\", ";
+}
+$content .= "],\n";
+$content .= "datasets: [{ label: \"CVE count\",\n";
+// generate data
+$content .= "data: [ ";
+$sql_cveChart = "SELECT cve_count FROM `cve_stats` ORDER BY id DESC LIMIT 0, 15";
+$result = $mysqli->query($sql_cveChart);
+while($row = $result->fetch_assoc())
+{
+    $content .= $row["cve_count"] . ", ";
+}
+$content .= "],\n";
+
+$content .= "borderColor: 'rgba(26, 51, 213, 1)',\n";
+$content .= "borderWidth: \"0\",\n";
+$content .= "backgroundColor: 'rgba(26, 51, 213, 1)'\n";
+$content .= "}]},\n";
+$content .= "options: { legend: false, scales: { yAxes: [{ ticks: { beginAtZero: true } }], xAxes: [{ barPercentage: 0.5 }] } } }); })(jQuery);\n";
+$content .= "</script>\n";
+/* END CVE DATA */
 
 echo $header;
 echo add_body($content);
