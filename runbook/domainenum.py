@@ -54,23 +54,30 @@ if __name__ == "__main__":
             nsrecord += "{0} ".format(data)
         nsrecord_list = nsrecord.split(" ") # --> use this list for NS field in domains table
 
-        r = dns_query(target[3], 'MX')
-        mxrecord = ''
-        for data in r:
-            mxrecord += "{0} ".format(data)
-        mxrecord_list = mxrecord.split(" ") # --> use this list for MX field in domains table
+        try:
+            r = dns_query(target[3], 'MX')
+            mxrecord = ''
+            for data in r:
+                mxrecord += "{0} ".format(data)
+            mxrecord_list = mxrecord.split(" ") # --> use this list for MX field in domains table
+        except:
+            mxrecord_list = ''
 
-        r = dns_query(target[3], 'TXT')
-        txtrecord = ''
-        for data in r:
-            txtrecord += "{0} ".format(data)
-        txtrecord_list = txtrecord.split(" ") # --> use this list for TXT field in domains table
+        try:
+            r = dns_query(target[3], 'TXT')
+            txtrecord = ''
+            for data in r:
+                txtrecord += "{0} ".format(data)
+            txtrecord_list = txtrecord.split(" ") # --> use this list for TXT field in domains table
+        except:
+            txtrecord_list = ''
+
         '''
         query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt, spf) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord_list, nsrecord_list, mxrecord_list)
         dbinsert(query)
         '''
 
-        print("DEBUG: {}\t{}\t".format(arecord_list, nsrecord_list))
+        print("DEBUG: {}\t{}\t{}\t{}\t".format(arecord_list, nsrecord_list, mxrecord_list, txtrecord_list))
 
 
 '''
