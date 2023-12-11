@@ -3,7 +3,7 @@
 include("./include.php");
 
 // intro banner
-$content .= "<div class=\"row page-titles mx-0\">\n";
+$content  = "<div class=\"row page-titles mx-0\">\n";
 $content .= "<div class=\"col-sm-6\">\n";
 $content .= "<div class=\"welcome-text\">\n";
 $content .= "<h4>Main Dashboard</h4>\n";
