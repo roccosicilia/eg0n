@@ -73,10 +73,9 @@ if __name__ == "__main__":
         except:
             txtrecord_list = ''
 
-        '''
-        query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt, spf) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord_list, nsrecord_list, mxrecord_list)
+    
+        query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord_list, nsrecord_list, mxrecord_list, txtrecord_list)
         dbinsert(query)
-        '''
 
         print("#"*100)
         print("# {}\n# {}\n# {}\n# {}\n".format(arecord_list, nsrecord_list, mxrecord_list, txtrecord_list))
