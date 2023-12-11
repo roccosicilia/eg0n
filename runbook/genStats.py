@@ -47,7 +47,7 @@ def cve_count():
             result = mycursor.fetchall()
             if len(result) >= 1:
                 # update DB
-                query_update = "UPDATE `cve_stats` SET cve_count = '{}' WHERE cwe = '{}'".format(row[1], row[0])
+                query_update = "UPDATE `cve_stats` SET cve_count = '{}' WHERE date_published = '{}'".format(row[1], row[0])
                 mycursor.execute(query_update)
                 myconn.commit()
                 print("Update cwe records.")
@@ -62,4 +62,3 @@ if __name__ == "__main__":
 
     cwe_count()
     cve_count()
-    
