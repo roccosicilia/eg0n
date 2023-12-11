@@ -90,7 +90,7 @@ $sql_cweChart = "SELECT * FROM `cwe_stats` ORDER BY id";
 $result = $mysqli->query($sql_cweChart);
 while($row = $result->fetch_assoc())
 {
-    $content .= "\"" . $row["cwe"] . "\", "
+    $content .= "\"" . $row["cwe"] . "\", ";
 }
 $content .= "],\n";
 $content .= "datasets: [{ label: \"CWE count\",\n";
@@ -98,7 +98,7 @@ $content .= "datasets: [{ label: \"CWE count\",\n";
 $content .= "data: [ ";
 while($row = $result->fetch_assoc())
 {
-    $content .= $row["cwe_count"] . ", "
+    $content .= $row["cwe_count"] . ", ";
 }
 $content .= "],\n";
 
