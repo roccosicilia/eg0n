@@ -86,7 +86,7 @@ $content .= "type: 'bar',\n";
 $content .= "data: { defaultFontFamily: 'Poppins',\n";
 // generate list of label
 $content .= "labels: [ ";
-$sql_cweChart = "SELECT * FROM `cwe_stats` ORDER BY cwe_count DESC LIMIT 0, 20";
+$sql_cweChart = "SELECT * FROM `cwe_stats` ORDER BY id DESC LIMIT 0, 20";
 $result = $mysqli->query($sql_cweChart);
 while($row = $result->fetch_assoc())
 {
@@ -96,7 +96,7 @@ $content .= "],\n";
 $content .= "datasets: [{ label: \"CWE count\",\n";
 // generate data
 $content .= "data: [ ";
-$sql_cweChart = "SELECT * FROM `cwe_stats` ORDER BY cwe_count DESC LIMIT 0, 20";
+$sql_cweChart = "SELECT * FROM `cwe_stats` ORDER BY id DESC LIMIT 0, 20";
 $result = $mysqli->query($sql_cweChart);
 while($row = $result->fetch_assoc())
 {
