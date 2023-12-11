@@ -77,7 +77,8 @@ if __name__ == "__main__":
         dbinsert(query)
         '''
 
-        print("DEBUG: {}\t{}\t{}\t{}\t".format(arecord_list, nsrecord_list, mxrecord_list, txtrecord_list))
+        print("#"*100)
+        print("# DEBUG: {}\n{}\n{}\n{}\n".format(arecord_list, nsrecord_list, mxrecord_list, txtrecord_list))
 
 
 '''
