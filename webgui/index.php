@@ -74,7 +74,45 @@ $content .= "<script src=\"./js/custom.min.js\"></script>\n";
 
 $content .= "<!-- Chart ChartJS plugin files -->\n";
 $content .= "<script src=\"./vendor/chart.js/Chart.bundle.min.js\"></script>\n";
-$content .= "<script src=\"./mychart/chart_dashboard_cwe.js\"></script>\n";
+
+// $content .= "<script src=\"./mychart/chart_dashboard_cwe.js\"></script>\n";
+$content .= "<script>\n";
+$content .= "(function($) {\n";
+$content .= "\"use strict\"\n";
+$content .= "const barChart_1 = document.getElementById(\"barChart_test\").getContext('2d');\n";
+$content .= "barChart_1.height = 100;\n";
+$content .= "new Chart(barChart_1, {\n";
+$content .= "type: 'bar',\n";
+$content .= "data: {\n";
+$content .= "defaultFontFamily: 'Poppins',\n";
+
+$content .= "labels: [\"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\", \"Jul\", \"TEST\"],\n";
+
+$content .= "datasets: [\n";
+$content .= "{\n";
+$content .= "label: \"My First dataset\",\n";
+$content .= "data: [65, 59, 80, 81, 56, 55, 40, 99],\n";
+$content .= "borderColor: 'rgba(26, 51, 213, 1)',\n";
+$content .= "borderWidth: \"0\",\n";
+$content .= "backgroundColor: 'rgba(26, 51, 213, 1)'\n";
+$content .= "}\n";
+$content .= "]\n";
+
+$content .= "},\n";
+$content .= "options: {\n";
+$content .= "legend: false,\n"; 
+$content .= "scales: {\n";
+$content .= "yAxes: [{\n";
+$content .= "ticks: {\n";
+$content .= "beginAtZero: true\n";
+$content .= "}\n";
+$content .= "}],\n";
+$content .= "xAxes: [{ barPercentage: 0.5 }]\n";
+$content .= "}\n";
+$content .= "}\n";
+$content .= "});\n";
+$content .= "})(jQuery);\n";
+$content .= "</script>\n";
 
 echo $header;
 echo add_body($content);
