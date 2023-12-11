@@ -32,5 +32,4 @@ new Chart(barChart_cwestats, {
         }
     }
 });
-
-// })(jQuery);
+(jQuery);
