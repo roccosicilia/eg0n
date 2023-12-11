@@ -13,18 +13,21 @@ $content .= "</div>\n";
 $content .= "<div class=\"row\">\n";
 $content .= "<div class=\"col-12\">\n";
 $content .= "<div class=\"row\">\n";
+
 $content .= "<div class=\"col-lg-6 col-sm-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\"><h4 class=\"card-title\">CWE stats</h4></div>\n";
 $content .= "<div class=\"card-body\"><canvas id=\"barChart_cwestats\"></canvas></div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
+
 $content .= "<div class=\"col-lg-6 col-sm-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\"><h4 class=\"card-title\">Gradient Bar Chart</h4></div>\n";
 $content .= "<div class=\"card-body\"><canvas id=\"barChart_2\"></canvas></div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
+
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
