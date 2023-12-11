@@ -50,13 +50,13 @@ def cve_count():
                 query_update = "UPDATE `cve_stats` SET cve_count = '{}' WHERE date_published = '{}'".format(row[1], row[0])
                 mycursor.execute(query_update)
                 myconn.commit()
-                print("Update cwe records.")
+                print("Update cve records.")
             else:
                 # insert daily data
                 query_insert = "INSERT INTO `cve_stats` (date_published, cve_count) VALUES ('{}', '{}')".format(row[0], row[1])
                 mycursor.execute(query_insert)
                 myconn.commit()
-                print("NEW cwe record!")
+                print("NEW cve record!")
 
 if __name__ == "__main__":
 
