@@ -74,7 +74,7 @@ $content .= "<script src=\"./js/custom.min.js\"></script>\n";
 
 $content .= "<!-- Chart ChartJS plugin files -->\n";
 $content .= "<script src=\"./vendor/chart.js/Chart.bundle.min.js\"></script>\n";
-$content .= "<script src=\"./js/plugins-init/chartjs-init.js\"></script>\n";
+$content .= "<script src=\"./mychart/chart_dashboard_cwe.js\"></script>\n";
 
 echo $header;
 echo add_body($content);
