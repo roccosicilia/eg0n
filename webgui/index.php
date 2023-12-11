@@ -96,6 +96,7 @@ $content .= "],\n";
 $content .= "datasets: [{ label: \"CWE count\",\n";
 // generate data
 $content .= "data: [ ";
+$result = $mysqli->query($sql_cweChart);
 while($row = $result->fetch_assoc())
 {
     $content .= $row["cwe_count"] . ", ";
