@@ -14,23 +14,23 @@ $content .= "<div class=\"col-sm-6 justify-content-sm-end mt-2 mt-sm-0 d-flex\">
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "<!-- row -->\n";
-
 $content .= "<div class=\"row\">\n";
 $content .= "<div class=\"col-12\">\n";
 
+// CWE chart
 $content .= "<div class=\"row\">\n";
 $content .= "<div class=\"col-lg-6 col-sm-6\">\n";
-
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\">\n";
-$content .= "<h4 class=\"card-title\">Basic Bar Chart</h4>\n";
+$content .= "<h4 class=\"card-title\">CWE stats</h4>\n";
 $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
-$content .= "<canvas id=\"barChart_1\"></canvas>\n";
+$content .= "<canvas id=\"barChart_test\"></canvas>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 
+// CVE chart
 $content .= "<div class=\"col-lg-6 col-sm-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\">\n";
