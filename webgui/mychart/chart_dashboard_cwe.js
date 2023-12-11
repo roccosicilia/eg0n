@@ -1,5 +1,3 @@
-"use strict"
-
 // CWE stats
 const barChart_cwestats = document.getElementById("barChart_cwestats").getContext('2d');
 barChart_cwestats.height = 100;
