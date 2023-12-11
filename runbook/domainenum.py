@@ -38,7 +38,8 @@ if __name__ == "__main__":
 
     ##### Target enumaeration #####################################################################
     for target in targetlist:
-        print("### Starting enumeration for {} ...".format(target[1]))
+        print("#"*100)
+        print("# Starting enumeration for {} ...".format(target[1]))
 
         ##### Define A record
         r = dns_query(target[3], 'A')
