@@ -22,7 +22,7 @@ def cwe_count():
                 query_update = "UPDATE `cwe_stats` SET cwe_count = '{}' WHERE cwe = '{}'".format(row[1], row[0])
                 mycursor.execute(query_update)
                 myconn.commit()
-                print("Update cwe records.")
+                print("Update cwe record.")
             else:
                 # insert new cwe
                 query_insert = "INSERT INTO `cwe_stats` (cwe, cwe_count) VALUES ('{}', '{}')".format(row[0], row[1])
@@ -50,7 +50,7 @@ def cve_count():
                 query_update = "UPDATE `cve_stats` SET cve_count = '{}' WHERE date_published = '{}'".format(row[1], row[0])
                 mycursor.execute(query_update)
                 myconn.commit()
-                print("Update cve records.")
+                print("Update cve record.")
             else:
                 # insert daily data
                 query_insert = "INSERT INTO `cve_stats` (date_published, cve_count) VALUES ('{}', '{}')".format(row[0], row[1])

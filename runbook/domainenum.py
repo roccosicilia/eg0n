@@ -73,7 +73,6 @@ if __name__ == "__main__":
         except:
             txtrecord_list = ''
 
-    
         query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord, nsrecord, mxrecord, txtrecord)
         dbinsert(query)
 
