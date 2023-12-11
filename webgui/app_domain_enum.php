@@ -4,7 +4,7 @@ include("./include.php");
 
 // intro banner
 $content  = "<div class=\"row page-titles mx-0\">\n";
-$content .= "<div class=\"col-sm-6\">\n";
+$content .= "<div class=\"col-sm-6 p-md-0\">\n";
 $content .= "<div class=\"welcome-text\">\n";
 $content .= "<h4>Domain Enumeration</h4>\n";
 $content .= "<p class=\"mb-0\"> </p>\n";
