@@ -68,11 +68,11 @@ $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
 $content .= "<div class=\"basic-list-group\">\n";
 $content .= "<ul class=\"list-group\">\n";
-$sql_target = "SELECT * FROM `domains` WHERE `discover_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id ASC LIMIT 0, 10";
+$sql_target = "SELECT * FROM `subdomains` WHERE `discover_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id ASC LIMIT 0, 10";
 $result = $mysqli->query($sql_target);
 while($row = $result->fetch_assoc())
 {
-    $content .= "<li class=\"list-group-item\">" . $row["base_url"] . " | " . $row["ipaddress"] . "</li>\n";
+    $content .= "<li class=\"list-group-item\">" . $row["subdomain"] . " | " . $row["ipaddress"] . "</li>\n";
 }
 $content .= "</ul>\n";
 $content .= "</div>\n";
