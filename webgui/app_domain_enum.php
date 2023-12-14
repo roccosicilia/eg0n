@@ -59,20 +59,20 @@ $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 
-// Target list
+// Last discoveder domain
 $content .= "<div class=\"col-xl-4 col-xxl-6 col-lg-6 col-md-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\">\n";
-$content .= "<h4 class=\"card-title\">Target list</h4>\n";
+$content .= "<h4 class=\"card-title\">Domain list</h4>\n";
 $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
 $content .= "<div class=\"basic-list-group\">\n";
 $content .= "<ul class=\"list-group\">\n";
-$sql_target = "SELECT * FROM `target` ORDER BY name ASC LIMIT 0, 10";
+$sql_target = "SELECT * FROM `domains` WHERE `discover_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id ASC LIMIT 0, 10";
 $result = $mysqli->query($sql_target);
 while($row = $result->fetch_assoc())
 {
-    $content .= "<li class=\"list-group-item\">" . $row["main_domain"] . "</li>\n";
+    $content .= "<li class=\"list-group-item\">" . $row["base_url"] . " | " . $row["ipaddress"] . "</li>\n";
 }
 $content .= "</ul>\n";
 $content .= "</div>\n";
