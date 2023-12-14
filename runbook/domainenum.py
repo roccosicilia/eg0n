@@ -1,7 +1,7 @@
 # Descr: get domain name informations
 # Usage: dnsenum.py TargetDomain.url
 
-import sys, time, requests, json
+import sys, time, requests, json, socket
 import dns.resolver, mysql.connector
 from datetime import date
 from config import *
@@ -86,15 +86,26 @@ if __name__ == "__main__":
         
         for NS in nsrecord_list:
             if NS != '' and len(NS) > 3:
+                ipaddress = socket.gethostbyname(NS)
                 print("New NS record discovered: {}".format(NS))
+                query = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discovery_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], NS, 'NS', ipaddress, discover_timestamp)
+                dbinsert(query)
 
         for MX in mxrecord_list:
             if MX != '' and len(MX) > 3:
+                ipaddress = socket.gethostbyname(MX)
                 print("New MX record discovered: {}".format(MX))
+                query = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discovery_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], MX, 'MX', ipaddress, discover_timestamp)
+                dbinsert(query)
 
         for TXT in txtrecord_list:
             if TXT != '' and len(TXT) > 3:
-                print("New TXT record discovered: {}".format(TXT))
+                if 'include' in TXT:
+                    txt_subdomain = TXT.split(':')
+                    ipaddress = socket.gethostbyname(txt_subdomain[1])
+                    print("New TXT record discovered: {}".format(txt_subdomain[1]))
+                    query = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discovery_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], txt_subdomain[1], 'TXT', ipaddress, discover_timestamp)
+                    dbinsert(query)
 
 '''
     # check A record
