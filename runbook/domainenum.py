@@ -74,6 +74,7 @@ if __name__ == "__main__":
 
         # insert domain if not exist
         query = "SELECT * FROM domains WHERE target = {} AND base_url = {} AND ipaddress = {}".format(target[1], target[3], arecord)
+        print(query)
         result = dbselect(query)
 
         if len(result) >= 1:
