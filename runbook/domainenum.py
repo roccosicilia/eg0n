@@ -73,13 +73,13 @@ if __name__ == "__main__":
             txtrecord_list = ''
 
         # insert domain if not exist
-        query = "SELECT * FROM domains WHERE target = {} AND base_url = {} AND ipaddress = {}".format(target[1], target[3], arecord)
+        query = "SELECT * FROM domains WHERE target = '{}' AND base_url = '{}' AND ipaddress = '{}'".format(target[1], target[3], arecord)
         print(query)
         result = dbselect(query)
 
         if len(result) >= 1:
             # record exist, update lastview_timestamp
-            query = "UPDATE domains SET lastview_timestamp = '{}' WHERE target = {} AND base_url = {} AND ipaddress = {}".format(int(time.time()), target[1], target[3], arecord)
+            query = "UPDATE domains SET lastview_timestamp = '{}' WHERE target = '{}' AND base_url = '{}' AND ipaddress = '{}'".format(int(time.time()), target[1], target[3], arecord)
             dbinsert(query)
         else:
             query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord, nsrecord, mxrecord, txtrecord)
