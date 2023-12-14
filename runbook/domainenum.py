@@ -81,19 +81,19 @@ if __name__ == "__main__":
         ##### Subdomain enumaeration ##############################################################
 
         for A in arecord_list:
-            if A != '':
+            if A != '' and len(A) > 3:
                 print("New IP address discovered: {}".format(A))
         
         for NS in nsrecord_list:
-            if NS != '':
+            if NS != '' and len(NS) > 3:
                 print("New NS record discovered: {}".format(NS))
 
         for MX in mxrecord_list:
-            if MX != '':
+            if MX != '' and len(MX) > 3:
                 print("New MX record discovered: {}".format(MX))
 
         for TXT in txtrecord_list:
-            if TXT != '':
+            if TXT != '' and len(TXT) > 3:
                 print("New TXT record discovered: {}".format(TXT))
 
 '''
