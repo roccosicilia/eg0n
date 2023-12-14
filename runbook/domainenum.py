@@ -74,14 +74,27 @@ if __name__ == "__main__":
 
         query = "INSERT INTO domains (target, base_url, discover_timestamp, ipaddress, ns, mx, txt) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}')".format(target[1], target[3], discover_timestamp, arecord, nsrecord, mxrecord, txtrecord)
         dbinsert(query)
-
+        '''
         print("#"*100)
         print("# {}\n# {}\n# {}\n# {}\n".format(arecord_list, nsrecord_list, mxrecord_list, txtrecord_list))
-
+        '''
         ##### Subdomain enumaeration ##############################################################
 
         for A in arecord_list:
-            print(A)
+            if A != '':
+                print("New IP address discovered: {}".format(A))
+        
+        for NS in nsrecord_list:
+            if NS != '':
+                print("New NS record discovered: {}".format(NS))
+
+        for MX in mxrecord_list:
+            if MX != '':
+                print("New MX record discovered: {}".format(MX))
+
+        for TXT in txtrecord_list:
+            if TXT != '':
+                print("New TXT record discovered: {}".format(TXT))
 
 '''
     # check A record
