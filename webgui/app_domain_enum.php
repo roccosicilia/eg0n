@@ -82,6 +82,7 @@ $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
+$content .= "</div>\n";
 
 $content .= "<!--**********************************\n";
 $content .= "Scripts\n";
