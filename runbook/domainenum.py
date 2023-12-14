@@ -88,14 +88,14 @@ if __name__ == "__main__":
             if NS != '' and len(NS) > 3:
                 ipaddress = socket.gethostbyname(NS)
                 print("New NS record discovered: {}".format(NS))
-                query_subdomain = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discovery_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], NS, 'NS', ipaddress, discover_timestamp)
+                query_subdomain = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discover_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], NS, 'NS', ipaddress, discover_timestamp)
                 dbinsert(query_subdomain)
 
         for MX in mxrecord_list:
             if MX != '' and len(MX) > 3:
                 ipaddress = socket.gethostbyname(MX)
                 print("New MX record discovered: {}".format(MX))
-                query_subdomain = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discovery_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], MX, 'MX', ipaddress, discover_timestamp)
+                query_subdomain = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discover_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], MX, 'MX', ipaddress, discover_timestamp)
                 dbinsert(query_subdomain)
 
         for TXT in txtrecord_list:
@@ -104,7 +104,7 @@ if __name__ == "__main__":
                     txt_subdomain = TXT.split(':')
                     ipaddress = socket.gethostbyname(txt_subdomain[1])
                     print("New TXT record discovered: {}".format(txt_subdomain[1]))
-                    query_subdomain = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discovery_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], txt_subdomain[1], 'TXT', ipaddress, discover_timestamp)
+                    query_subdomain = "INSERT INTO subdomain (target, subdomain, type, ipaddress, discover_timestamp) VALUES ('{}', '{}', '{}', '{}', '{}')".format(target[1], txt_subdomain[1], 'TXT', ipaddress, discover_timestamp)
                     dbinsert(query_subdomain)
 
 '''
