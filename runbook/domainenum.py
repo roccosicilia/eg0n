@@ -41,32 +41,31 @@ if __name__ == "__main__":
         print("#"*100)
         print("# Starting enumeration for {} ...".format(target[1]))
 
-        ##### Define A record
-        r = dns_query(target[3], 'A')
+        ##### Define records
         arecord = ''
+        r = dns_query(target[3], 'A')
         for data in r:
             arecord += "{0} ".format(data)
         arecord_list = arecord.split(" ") # --> use this list for IPADDRESS field in domains table
 
-
-        r = dns_query(target[3], 'NS')
         nsrecord = ''
+        r = dns_query(target[3], 'NS')
         for data in r:
             nsrecord += "{0} ".format(data)
         nsrecord_list = nsrecord.split(" ") # --> use this list for NS field in domains table
 
+        mxrecord = ''
         try:
             r = dns_query(target[3], 'MX')
-            mxrecord = ''
             for data in r:
                 mxrecord += "{0} ".format(data)
             mxrecord_list = mxrecord.split(" ") # --> use this list for MX field in domains table
         except:
             mxrecord_list = ''
 
+        txtrecord = ''
         try:
             r = dns_query(target[3], 'TXT')
-            txtrecord = ''
             for data in r:
                 txtrecord += "{0} ".format(data)
             txtrecord_list = txtrecord.split(" ") # --> use this list for TXT field in domains table
