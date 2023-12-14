@@ -15,8 +15,9 @@ $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "<!-- row -->\n";
 
-// Target list
 $content .= "<div class=\"row\">\n";
+
+// Target list
 $content .= "<div class=\"col-xl-4 col-xxl-6 col-lg-6 col-md-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\">\n";
@@ -35,10 +36,8 @@ $content .= "</ul>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
-$content .= "</div>\n";
 
 // Target list
-$content .= "<div class=\"row\">\n";
 $content .= "<div class=\"col-xl-4 col-xxl-6 col-lg-6 col-md-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\">\n";
@@ -57,10 +56,8 @@ $content .= "</ul>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
-$content .= "</div>\n";
 
 // Target list
-$content .= "<div class=\"row\">\n";
 $content .= "<div class=\"col-xl-4 col-xxl-6 col-lg-6 col-md-6\">\n";
 $content .= "<div class=\"card\">\n";
 $content .= "<div class=\"card-header\">\n";
@@ -76,10 +73,11 @@ while($row = $result->fetch_assoc())
     $content .= "<li class=\"list-group-item\">" . $row["main_domain"] . "</li>\n";
 }
 $content .= "</ul>\n";
+
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
-$content .= "</div>\n";
+
 $content .= "</div>\n";
 $content .= "</div>\n";
 $content .= "</div>\n";
