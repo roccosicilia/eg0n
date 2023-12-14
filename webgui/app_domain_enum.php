@@ -26,7 +26,7 @@ $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
 $content .= "<div class=\"basic-list-group\">\n";
 $content .= "<ul class=\"list-group\">\n";
-$sql_target = "SELECT * FROM `target` ORDER BY id ASC LIMIT 0, 10";
+$sql_target = "SELECT * FROM `target` ORDER BY id ASC LIMIT 0, 15";
 $result = $mysqli->query($sql_target);
 while($row = $result->fetch_assoc())
 {
@@ -47,7 +47,7 @@ $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
 $content .= "<div class=\"basic-list-group\">\n";
 $content .= "<ul class=\"list-group\">\n";
-$sql_target = "SELECT * FROM `domains` WHERE `discover_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id ASC LIMIT 0, 10";
+$sql_target = "SELECT * FROM `domains` WHERE `discover_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id DESC LIMIT 0, 15";
 $result = $mysqli->query($sql_target);
 while($row = $result->fetch_assoc())
 {
@@ -68,7 +68,7 @@ $content .= "</div>\n";
 $content .= "<div class=\"card-body\">\n";
 $content .= "<div class=\"basic-list-group\">\n";
 $content .= "<ul class=\"list-group\">\n";
-$sql_target = "SELECT * FROM `subdomain` WHERE `discover_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id ASC LIMIT 0, 10";
+$sql_target = "SELECT * FROM `subdomain` WHERE `discover_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id DESC LIMIT 0, 15";
 $result = $mysqli->query($sql_target);
 while($row = $result->fetch_assoc())
 {
