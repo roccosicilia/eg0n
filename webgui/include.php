@@ -196,8 +196,8 @@ function add_body($content)
 
     $body .= $content;
 
-    // $body .= "</div>\n";
-    // $body .= "</div>\n";
+    $body .= "</div>\n";
+    $body .= "</div>\n";
     $body .= "<!--**********************************\n";
     $body .= "Content body end\n";
     $body .= "***********************************-->\n";
