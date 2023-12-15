@@ -35,8 +35,8 @@ if ($target != '')
     while($row = $res->fetch_assoc())
     {
         // ip address list
-        $ip_list = explode(" ", $row["ipaddress"])
-        $ip_string = ''
+        $ip_list = explode(" ", $row["ipaddress"]);
+        $ip_string = '';
         for($i = 0; $i < count($ip_list); $i++)
         {
             if ($i < count($ip_list)-1)
