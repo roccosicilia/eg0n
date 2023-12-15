@@ -41,11 +41,11 @@ if ($target != '')
         {
             if ($i < count($ip_list)-1)
             {
-                $ip_string += $ip_list[$i] . "<br/>";
+                $ip_string .= $ip_list[$i] . "<br/>";
             }
             else
             {
-                $ip_string += $ip_list[$i];
+                $ip_string .= $ip_list[$i];
             }
         }
 
