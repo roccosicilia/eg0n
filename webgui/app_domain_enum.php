@@ -2,7 +2,10 @@
 
 include("./include.php");
 
-$target = addslashes(stripslashes($_GET["target"]));
+if(isset($_GET["target"]))
+{
+    $target = addslashes(stripslashes($_GET["target"]));
+}
 
 if ($target != '')
 {
@@ -68,7 +71,7 @@ if ($target != '')
         $mx_string = '';
         for($i = 0; $i < count($mx_list); $i++)
         {
-            if ($i < count($mx_list)-1)
+            if (($i < count($mx_list)-1) AND (count($mx_list[$i]) > 3))
             {
                 $mx_string .= $mx_list[$i] . "<br/>";
             }
