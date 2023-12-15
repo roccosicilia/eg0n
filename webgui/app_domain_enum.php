@@ -81,7 +81,7 @@ if ($target != '')
             }
         }
 
-        $content .= "<tr>\n";
+        $content .= "<tr valign=\"top\">\n";
         $content .= "<td>" . $row["base_url"] . "</td><td>" . $ip_string . "</td><td>" . $ns_string . "</td><td>" . $mx_string . "</td><td>-</td><td>-</td>\n";
         $content .= "</tr>\n";
     }
