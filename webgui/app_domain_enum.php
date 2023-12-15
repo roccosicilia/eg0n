@@ -35,7 +35,7 @@ if ($target != '')
     while($row = $res->fetch_assoc())
     {
         $content .= "<tr>\n";
-        $content .= "<td>" . $row["base_url"] . "</td><td>" . $row["ipaddress"] . "</td><td>" . $row["NS"] . "</td><td>" . $row["MX"] . "</td><td>-</td><td>-</td>\n";
+        $content .= "<td>" . $row["base_url"] . "</td><td>" . $row["ipaddress"] . "</td><td>" . $row["ns"] . "</td><td>" . $row["mx"] . "</td><td>-</td><td>-</td>\n";
         $content .= "</tr>\n";
     }
     $content .= "</tbody>\n";
