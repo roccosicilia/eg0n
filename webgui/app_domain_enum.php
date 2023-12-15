@@ -95,7 +95,7 @@ else
     $result = $mysqli->query($sql_target);
     while($row = $result->fetch_assoc())
     {
-        $content .= "<li class=\"list-group-item\"><a href=\"./app_domain_enum.php?target=$row["target"]\">" . $row["target"] . "</a> (" . $row["base_url"] . ")<br />" . $row["ipaddress"] . "</li>\n";
+        $content .= "<li class=\"list-group-item\"><a href=\"./app_domain_enum.php?target=" . $row["target"] . "\">" . $row["target"] . "</a> (" . $row["base_url"] . ")<br />" . $row["ipaddress"] . "</li>\n";
     }
     $content .= "</ul>\n";
     $content .= "</div>\n";
