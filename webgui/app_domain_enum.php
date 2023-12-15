@@ -49,8 +49,37 @@ if ($target != '')
             }
         }
 
+        // NS list
+        $ns_list = explode(" ", $row["ns"]);
+        $ns_string = '';
+        for($i = 0; $i < count($ns_list); $i++)
+        {
+            if ($i < count($ns_list)-1)
+            {
+                $ns_string .= $ns_list[$i] . "<br/>";
+            }
+            else
+            {
+                $ns_string .= $ns_list[$i];
+            }
+        }
+        // MX list
+        $mx_list = explode(" ", $row["mx"]);
+        $mx_string = '';
+        for($i = 0; $i < count($mx_list); $i++)
+        {
+            if ($i < count($mx_list)-1)
+            {
+                $mx_string .= $mx_list[$i] . "<br/>";
+            }
+            else
+            {
+                $mx_string .= $mx_list[$i];
+            }
+        }
+
         $content .= "<tr>\n";
-        $content .= "<td>" . $row["base_url"] . "</td><td>" . $ip_string . "</td><td>" . $row["ns"] . "</td><td>" . $row["mx"] . "</td><td>-</td><td>-</td>\n";
+        $content .= "<td>" . $row["base_url"] . "</td><td>" . $ip_string . "</td><td>" . $ns_string . "</td><td>" . $mx_list . "</td><td>-</td><td>-</td>\n";
         $content .= "</tr>\n";
     }
     $content .= "</tbody>\n";
