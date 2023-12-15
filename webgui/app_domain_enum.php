@@ -81,7 +81,76 @@ if ($target != '')
             }
         }
 
-        $content .= "<tr valign=\"top\">\n";
+        $content .= "<tr>\n";
+        $content .= "<td>" . $row["base_url"] . "</td><td>" . $ip_string . "</td><td>" . $ns_string . "</td><td>" . $mx_string . "</td><td>-</td><td>-</td>\n";
+        $content .= "</tr>\n";
+    }
+    $content .= "</tbody>\n";
+    $content .= "</table>\n";
+    $content .= "</div>\n";
+    $content .= "</div>\n";
+    $content .= "</div>\n";
+    $content .= "</div>\n";
+
+    // subdomain
+    $content .= "<div class=\"col-lg-12\">\n";
+    $content .= "<div class=\"card\">\n";
+    $content .= "<div class=\"card-header\"><h4 class=\"card-title\">Responsive Table</h4></div>\n";
+    $content .= "<div class=\"card-body\">\n";
+    $content .= "<div class=\"table-responsive\">\n";
+    $content .= "<table class=\"table header-border table-responsive-sm\">\n";
+    $content .= "<thead><tr><th>Base URL</th><th>IP address</th><th>NS</th><th>MX</th><th>Expiration day</th><th>Admin Contact</th></tr></thead>\n";
+    $content .= "<tbody>\n";
+    // get data from DB
+    $sql = "SELECT * FROM `domains` WHERE `target` = '" . $target . "' AND `lastview_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id";
+    $res = $mysqli->query($sql);
+    while($row = $res->fetch_assoc())
+    {
+        // ip address list
+        $ip_list = explode(" ", $row["ipaddress"]);
+        $ip_string = '';
+        for($i = 0; $i < count($ip_list); $i++)
+        {
+            if ($i < count($ip_list)-1)
+            {
+                $ip_string .= $ip_list[$i] . "<br/>";
+            }
+            else
+            {
+                $ip_string .= $ip_list[$i];
+            }
+        }
+
+        // NS list
+        $ns_list = explode(". ", $row["ns"]);
+        $ns_string = '';
+        for($i = 0; $i < count($ns_list); $i++)
+        {
+            if ($i < count($ns_list)-1)
+            {
+                $ns_string .= $ns_list[$i] . "<br/>";
+            }
+            else
+            {
+                $ns_string .= $ns_list[$i];
+            }
+        }
+        // MX list
+        $mx_list = explode(". ", $row["mx"]);
+        $mx_string = '';
+        for($i = 0; $i < count($mx_list); $i++)
+        {
+            if ($i < count($mx_list)-1)
+            {
+                $mx_string .= $mx_list[$i] . "<br/>";
+            }
+            else
+            {
+                $mx_string .= $mx_list[$i];
+            }
+        }
+
+        $content .= "<tr>\n";
         $content .= "<td>" . $row["base_url"] . "</td><td>" . $ip_string . "</td><td>" . $ns_string . "</td><td>" . $mx_string . "</td><td>-</td><td>-</td>\n";
         $content .= "</tr>\n";
     }
