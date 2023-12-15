@@ -53,7 +53,7 @@ if ($target != '')
         }
 
         // NS list
-        $ns_list = explode(", ", $row["ns"]);
+        $ns_list = explode(". ", $row["ns"]);
         $ns_string = '';
         for($i = 0; $i < count($ns_list); $i++)
         {
@@ -67,7 +67,7 @@ if ($target != '')
             }
         }
         // MX list
-        $mx_list = explode(", ", $row["mx"]);
+        $mx_list = explode(". ", $row["mx"]);
         $mx_string = '';
         for($i = 0; $i < count($mx_list); $i++)
         {
