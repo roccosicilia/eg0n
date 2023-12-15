@@ -44,6 +44,19 @@ if ($target != '')
     $content .= "</div>\n";
     $content .= "</div>\n";
     $content .= "</div>\n";
+
+    $content .= "</div>\n";
+    $content .= "</div>\n";
+    $content .= "</div>\n";
+    $content .= "</div>\n";
+
+    $content .= "<!--**********************************\n";
+    $content .= "Scripts\n";
+    $content .= "***********************************-->\n";
+    $content .= "<!-- Required vendors -->\n";
+    $content .= "<script src=\"./vendor/global/global.min.js\"></script>\n";
+    $content .= "<script src=\"./js/quixnav-init.js\"></script>\n";
+    $content .= "<script src=\"./js/custom.min.js\"></script>\n";
 }
 else
 {

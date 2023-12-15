@@ -176,7 +176,7 @@ $footer .="Footer start\n";
 $footer .="***********************************-->\n";
 $footer .="<div class=\"footer\">\n";
 $footer .="<div class=\"copyright\">\n";
-$footer .="<p>Copyright © Designed &amp; Developed by <a href=\"#\" target=\"_blank\">Quixkit</a> 2019</p>\n";
+$footer .="<p>Coded by <a href=\"https://roccosicilia.com\">sheliak</a></p>\n";
 $footer .="</div>\n";
 $footer .="</div>\n";
 $footer .="<!--**********************************\n";
