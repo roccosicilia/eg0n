@@ -2,7 +2,7 @@
 
 include("./include.php");
 
-$target = addslashes(stripslashes($_GET["target"]))
+$target = addslashes(stripslashes($_GET["target"]));
 
 if ($target != '')
 {
