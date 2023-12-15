@@ -26,7 +26,7 @@ if ($target != '')
     // domain details
     $content .= "<div class=\"col-lg-12\">\n";
     $content .= "<div class=\"card\">\n";
-    $content .= "<div class=\"card-header\"><h4 class=\"card-title\">Responsive Table</h4></div>\n";
+    $content .= "<div class=\"card-header\"><h4 class=\"card-title\">Target domains</h4></div>\n";
     $content .= "<div class=\"card-body\">\n";
     $content .= "<div class=\"table-responsive\">\n";
     $content .= "<table class=\"table header-border table-responsive-sm\">\n";
@@ -95,14 +95,14 @@ if ($target != '')
     // subdomain
     $content .= "<div class=\"col-lg-12\">\n";
     $content .= "<div class=\"card\">\n";
-    $content .= "<div class=\"card-header\"><h4 class=\"card-title\">Responsive Table</h4></div>\n";
+    $content .= "<div class=\"card-header\"><h4 class=\"card-title\">Target subdomains</h4></div>\n";
     $content .= "<div class=\"card-body\">\n";
     $content .= "<div class=\"table-responsive\">\n";
     $content .= "<table class=\"table header-border table-responsive-sm\">\n";
     $content .= "<thead><tr><th>Base URL</th><th>IP address</th><th>NS</th><th>MX</th><th>Expiration day</th><th>Admin Contact</th></tr></thead>\n";
     $content .= "<tbody>\n";
     // get data from DB
-    $sql = "SELECT * FROM `domains` WHERE `target` = '" . $target . "' AND `lastview_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id";
+    $sql = "SELECT * FROM `subdomains` WHERE `target` = '" . $target . "' AND `lastview_timestamp` >= UNIX_TIMESTAMP(NOW() - INTERVAL 1 HOUR) ORDER BY id";
     $res = $mysqli->query($sql);
     while($row = $res->fetch_assoc())
     {
