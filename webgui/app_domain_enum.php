@@ -30,9 +30,9 @@ if ($target != '')
     $content .= "<thead><tr><th>Base URL</th><th>IP address</th><th>NS</th><th>MX</th><th>Expiration day</th><th>Admin Contact</th></tr></thead>\n";
     $content .= "<tbody>\n";
     // get data from DB
-    $sql = "SELECT * FROM `domains` WHERE target = " . $target . " ORDER BY id";
+    $sql = "SELECT * FROM `domains` WHERE `target` = " . $target . " ORDER BY id";
     $res = $mysqli->query($sql);
-    while($row = $$res->fetch_assoc())
+    while($row = $res->fetch_assoc())
     {
         $content .= "<tr>\n";
         $content .= "<td>" . $row["base_url"] . "</td><td>" . $row["ipaddress"] . "</td><td>" . $row["NS"] . "</td><td>" . $row["MX"] . "</td><td>-</td><td>-</td>\n";
