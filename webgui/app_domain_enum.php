@@ -34,8 +34,23 @@ if ($target != '')
     $res = $mysqli->query($sql);
     while($row = $res->fetch_assoc())
     {
+        // ip address list
+        $ip_list = explode(" ", $row["ipaddress"])
+        $ip_string = ''
+        for($i = 0; $i < count($ip_list); $i++)
+        {
+            if ($i < count($ip_list)-1)
+            {
+                $ip_string += $ip_list[$i] . "<br/>";
+            }
+            else
+            {
+                $ip_string += $ip_list[$i];
+            }
+        }
+
         $content .= "<tr>\n";
-        $content .= "<td>" . $row["base_url"] . "</td><td>" . $row["ipaddress"] . "</td><td>" . $row["ns"] . "</td><td>" . $row["mx"] . "</td><td>-</td><td>-</td>\n";
+        $content .= "<td>" . $row["base_url"] . "</td><td>" . $ip_string . "</td><td>" . $row["ns"] . "</td><td>" . $row["mx"] . "</td><td>-</td><td>-</td>\n";
         $content .= "</tr>\n";
     }
     $content .= "</tbody>\n";
