@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vulns_review',
+    'ip_rep',
 ]
 
 MIDDLEWARE = [
