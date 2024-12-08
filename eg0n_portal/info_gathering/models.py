@@ -10,6 +10,9 @@ class OrganizationInfo(models.Model):
     url = models.CharField(max_length=64, blank=True, default='none')
     description = models.TextField()
     publish_date = models.DateField(auto_now=False, auto_now_add=True)
+    
+    def __str__(self):
+        return self.organization_name
 
 class PersonInfo(models.Model):
     person_name = models.CharField(max_length=64, unique=True)
@@ -25,11 +28,14 @@ class PersonInfo(models.Model):
     description = models.TextField()
     publish_date = models.DateField(auto_now=False, auto_now_add=True)
 
+    def __str__(self):
+        return self.person_name
+
 class DomainName(models.Model):
     domain_name = models.CharField(max_length=64, unique=True)
-    organization_name = models.ForeignKey(OrganizationInfo, to_field="organization_name", on_delete=models.CASCADE, db_column="organization_name")
+    organization_name = models.ForeignKey(OrganizationInfo, to_field="organization_name", on_delete=models.CASCADE, db_column="organization_name", default="none", null=True)
     administrative_contact = models.ForeignKey(PersonInfo, to_field="person_name", on_delete=models.CASCADE, db_column="person_name")
-    technical_contact = models.ForeignKey(PersonInfo, to_field="person_name", on_delete=models.CASCADE, db_column="person_name")
+    #technical_contact = models.ForeignKey(PersonInfo, to_field="person_name", on_delete=models.CASCADE, db_column="person_name")
     name_server_1 = models.CharField(max_length=64, blank=True, default='none')
     name_server_2 = models.CharField(max_length=64, blank=True, default='none')
     name_server_3 = models.CharField(max_length=64, blank=True, default='none')
@@ -37,3 +43,6 @@ class DomainName(models.Model):
     create_date = models.DateField(default=datetime.now(timezone.utc))
     update_date = models.DateField(default=datetime.now(timezone.utc))
     expire_date = models.DateField(default=datetime.now(timezone.utc))
+
+    def __str__(self):
+        return self.domain_name

@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ioc_management',
-    #'vulns_review',
-    #'ip_rep',
+    'info_gathering',
 
 ]
 

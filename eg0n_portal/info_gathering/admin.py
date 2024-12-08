@@ -15,13 +15,14 @@ class PersonInfoAdmin(admin.ModelAdmin):
     class Meta:
         model = PersonInfo
 
-class DomainNameInfo(admin.ModelAdmin):
-    list_display = ["domain_name", "organization_name", "name_server_1"]
-    list_filter = ["publish_date"]
+class DomainNameAdmin(admin.ModelAdmin):
+    list_display = ["domain_name", "organization_name", "administrative_contact"]
+    list_filter = ["expire_date"]
     search_fields = ["domain_name", "organization_name"]
     class Meta:
         model = DomainName
 
 # Register
+admin.site.register(DomainName, DomainNameAdmin)
 admin.site.register(OrganizationInfo, OrganizationInfoAdmin)
 admin.site.register(PersonInfo, PersonInfoAdmin)
