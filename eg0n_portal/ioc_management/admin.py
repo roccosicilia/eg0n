@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Vuln, VulnReview
+from .models import Vuln, VulnReview, ipadd
 
-# Vuln: custom admin
+# Vulnerabilities: custom admin
 class VulnsAdmin(admin.ModelAdmin):
     list_display = ["name", "cve", "cvss", "publish_date"]
     list_filter = ["publish_date"]
@@ -18,7 +18,17 @@ class VulnReviewAdmin(admin.ModelAdmin):
     search_fields = ["cve", "author"]
     class Meta:
         model = VulnReview
-    
-# Vuln: register
+
+# IP Address: custom admin
+class IpAdmin(admin.ModelAdmin):
+    list_display = ["ip_address", "url", "fqdn", "publish_date", "expire_date"]
+    list_filter = ["publish_date"]
+    search_fields = ["ip_address", "url"]
+    class Meta:
+        model = ipadd
+
+
+# Register
 admin.site.register(Vuln, VulnsAdmin)
 admin.site.register(VulnReview, VulnReviewAdmin)
+admin.site.register(ipadd, IpAdmin)

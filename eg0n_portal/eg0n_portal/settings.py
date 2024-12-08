@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vulns_review',
-    'ip_rep',
+    'ioc_management',
+    #'vulns_review',
+    #'ip_rep',
+
 ]
 
 MIDDLEWARE = [

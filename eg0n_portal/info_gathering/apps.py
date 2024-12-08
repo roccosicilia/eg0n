@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class VulnsReviewConfig(AppConfig):
+class InfoGatheringConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'vulns_review'
+    name = 'info_gathering'
