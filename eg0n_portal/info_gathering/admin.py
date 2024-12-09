@@ -9,14 +9,14 @@ class OrganizationInfoAdmin(admin.ModelAdmin):
         model = OrganizationInfo
 
 class PersonInfoAdmin(admin.ModelAdmin):
-    list_display = ["person_name", "person_email", "person_website"]
+    list_display = ["name", "email", "website"]
     list_filter = ["publish_date"]
-    search_fields = ["person_name", "person_email"]
+    search_fields = ["name", "email"]
     class Meta:
         model = PersonInfo
 
 class DomainNameAdmin(admin.ModelAdmin):
-    list_display = ["domain_name", "organization_name", "administrative_contact"]
+    list_display = ["domain_name", "organization_name", "organization_name"]
     list_filter = ["expire_date"]
     search_fields = ["domain_name", "organization_name"]
     class Meta:
