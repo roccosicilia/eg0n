@@ -11,19 +11,23 @@ class Vuln(models.Model):
     publish_date = models.DateField(auto_now=False, auto_now_add=True)
     update_date = models.DateField(auto_now=True, auto_now_add=False)
     slug = models.SlugField()
+    author = models.CharField(max_length=32, editable=False, default=None)
+    lastchange_author = models.CharField(max_length=32, editable=False, default=None)
 
     def __str__(self):
         return self.cve
 
 class VulnReview(models.Model):
     cve = models.ForeignKey(Vuln, to_field="name", on_delete=models.CASCADE, db_column="name")
-    review = models.TextField()
+    review = models.TextField(null=True, blank=True)
     publish_date = models.DateField(auto_now=False, auto_now_add=True)
     update_date = models.DateField(auto_now=True, auto_now_add=False)
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
-
+    references_list = models.TextField(null=True, blank=True)
+    author = models.CharField(max_length=32, editable=False, default=None)
+    lastchange_author = models.CharField(max_length=32, editable=False, default=None)
+    
     def __str__(self):
-        return f"{self.author})"
+        return f"Review of {self.cve} by {self.lastchange_author}"
 
 # IP Address Models
 CONFIDENCE_CHOICES = [ ('low', 'low'), ('medium', 'medium'), ('high', 'high') ]
@@ -36,3 +40,8 @@ class ipadd(models.Model):
     publish_date = models.DateField(auto_now=False, auto_now_add=True)
     update_date = models.DateField(auto_now=True, auto_now_add=False)
     expire_date = models.DateField(default=datetime.now(timezone.utc))
+    author = models.CharField(max_length=32, editable=False, default=None)
+    lastchange_author = models.CharField(max_length=32, editable=False, default=None)
+
+    def __str__(self):
+        return self.ip_address
