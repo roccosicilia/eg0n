@@ -18,7 +18,7 @@ class Vuln(models.Model):
         return self.cve
 
 class VulnReview(models.Model):
-    cve = models.ForeignKey(Vuln, to_field="name", on_delete=models.CASCADE, db_column="name")
+    cve = models.ForeignKey(Vuln, to_field="name", on_delete=models.CASCADE, db_column="name", unique=True)
     review = models.TextField(null=True, blank=True)
     publish_date = models.DateField(auto_now=False, auto_now_add=True)
     update_date = models.DateField(auto_now=True, auto_now_add=False)
