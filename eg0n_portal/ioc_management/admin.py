@@ -19,7 +19,7 @@ class VulnsAdmin(admin.ModelAdmin):
 
 class VulnReviewAdmin(admin.ModelAdmin):
     # admin view
-    list_display = ["cve", "publish_date", "author", "lastchange_author"]
+    list_display = ["cve", "publish_date", "author", "author"]
     list_filter = ["publish_date"]
     search_fields = ["cve", "author"]
     # author field
