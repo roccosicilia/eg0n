@@ -16,7 +16,7 @@ class PersonInfoAdmin(admin.ModelAdmin):
         model = PersonInfo
 
 class DomainNameAdmin(admin.ModelAdmin):
-    list_display = ["domain_name", "organization_name", "organization_name"]
+    list_display = ["domain_name", "organization_name", "administrative_contact", "technical_contact"]
     list_filter = ["expire_date"]
     search_fields = ["domain_name", "organization_name"]
     class Meta:

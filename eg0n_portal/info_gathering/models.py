@@ -34,8 +34,8 @@ class PersonInfo(models.Model):
 class DomainName(models.Model):
     domain_name = models.CharField(max_length=64, unique=True)
     organization_name = models.ForeignKey(OrganizationInfo, to_field="organization_name", on_delete=models.CASCADE, db_column="organization_name", default="none", null=True)
-    administrative_contact = models.CharField(max_length=64, blank=True, default='none')
-    technical_contact = models.ForeignKey(PersonInfo, to_field="name", on_delete=models.CASCADE, default="none")
+    administrative_contact = models.ForeignKey(PersonInfo, to_field="name", on_delete=models.CASCADE, default="none", related_name="administrative")
+    technical_contact = models.ForeignKey(PersonInfo, to_field="name", on_delete=models.CASCADE, default="none", related_name="technical")
     name_server_1 = models.CharField(max_length=64, blank=True, default='none')
     name_server_2 = models.CharField(max_length=64, blank=True, default='none')
     name_server_3 = models.CharField(max_length=64, blank=True, default='none')
