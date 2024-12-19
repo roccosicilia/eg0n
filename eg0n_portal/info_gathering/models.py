@@ -25,6 +25,7 @@ class PersonInfo(models.Model):
     facebook = models.CharField(max_length=64, blank=True, default='none')
     instagram = models.CharField(max_length=64, blank=True, default='none')
     tiktok = models.CharField(max_length=64, blank=True, default='none')
+    mastodon = models.CharField(max_length=64, blank=True, default='none')
     description = models.TextField()
     publish_date = models.DateField(auto_now=False, auto_now_add=True)
 
